@@ -16,13 +16,17 @@ document.addEventListener("click", (event) => {
     });
 
     if (editNameNote) {
-      edit(newNote);
-      console.log("This is prompt", newNote);
+      edit(newNote).then(() => {
+        const elem = event.target.closest("li");
+        console.log(elem.textContent);
+        elem.textContent = editNameNote;
+      });
     } else {
       console.log("Вы ничего не ввели");
     }
   }
 });
+
 async function edit(data) {
   await fetch(`/${data}`, { method: "PUT" });
 }
