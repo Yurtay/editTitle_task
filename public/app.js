@@ -18,8 +18,7 @@ document.addEventListener("click", (event) => {
     if (editNameNote) {
       edit(newNote).then(() => {
         const elem = event.target.closest("li");
-        console.log(elem.textContent);
-        elem.textContent = editNameNote;
+        elem.childNodes[0].textContent = editNameNote;
       });
     } else {
       console.log("Вы ничего не ввели");
